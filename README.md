@@ -1,13 +1,11 @@
-## Vgniter - Codeigniter -Voguepay Payment Library
-	library to integrate Voguepay Payment Gateway API on codeigniter
+## Spay - Codeigniter - SimplePay Payment Library
+	library to integrate Simplepay Payment Gateway API on codeigniter
 
 ## Class Features
 
-- Pay with voguepay!
-- Access comand api to create user, pay, fetch e.t.c
+- Pay with Simplepay!
 - Add auto generated items 
 - Light weight
-- Support country and currency
 - Need no instal and has no database, just copy files to the right folder
 - Can be integrated to any Codeigniter application
 - Tested with codeigniter version 3.0 but backward compactible with version 2.0
@@ -16,7 +14,7 @@
 
 ## Why you might need it
 
- To manually integrate VoguePay into your website. When you're done, you will have added a VoguePay button and supporting code to your website so that customers can click to place orders through VoguePay.
+ To manually integrate simplepay into your website. When you're done, you will have added a VoguePay button and supporting code to your website so that customers can click to place orders through simplepay.
 
 ## License
 
@@ -28,15 +26,15 @@ software availability and distribution.
 
 
     Drop the provided files into the CodeIgniter project
-    Configure your vougepay details inside the application/config/vgniter.php file. refer to http://voguepay.com/developer
-    Modify the controller example supplied (application/controller/vgniter.php) to fit your needs
+    Configure your vougepay details inside the application/config/simplepay.php file. refer to http://voguepay.com/developer
+    Modify the controller example supplied (application/controller/simplepay.php) to fit your needs
 
 	
 ## A Simple Example
 
   To use Vgniter load the library in your controller
 ```php
-  $this->load->library('Vgniter_lib');
+  $this->load->library('spay');
 ```
 
    To add 
@@ -63,7 +61,7 @@ software availability and distribution.
 ```php
 <?php
  	
-class Vgniter extends CI_Controller {
+class Spay extends CI_Controller {
 
 	function __construct()
 	{
@@ -94,7 +92,7 @@ class Vgniter extends CI_Controller {
 
 You'll find it easy to implement.
 
-That's it. You should now be ready to use Vgniter!
+That's it. You should now be ready to use Spay!
 
 ## Localization
-Vgniter defaults to English
+Spay defaults to English
