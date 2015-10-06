@@ -14,7 +14,7 @@
 
 ## Why you might need it
 
- To manually integrate simplepay into your website. When you're done, you will have added a VoguePay button and supporting code to your website so that customers can click to place orders through simplepay.
+ To manually integrate simplepay into your website. When you're done, you will have added a SimplePay button and supporting code to your website so that customers can click to place orders through simplepay.
 
 ## License
 
@@ -26,13 +26,13 @@ software availability and distribution.
 
 
     Drop the provided files into the CodeIgniter project
-    Configure your vougepay details inside the application/config/simplepay.php file. refer to http://voguepay.com/developer
+    Configure your vougepay details inside the application/config/simplepay.php file. refer to http://simplepay.com/developer.php
     Modify the controller example supplied (application/controller/simplepay.php) to fit your needs
 
 	
 ## A Simple Example
 
-  To use Vgniter load the library in your controller
+  To use Spay load the library in your controller
 ```php
   $this->load->library('spay');
 ```
@@ -40,21 +40,12 @@ software availability and distribution.
    To add 
    Initiate the library with
 ```php
-  //voguepay_start( memo , currency, store_id, recurrent, interval, demo);
-  $form = $this->vgniter_lib->voguepay_start(1000,'','','','','','demo');
-``` 
-	To add items simply use
-```php
-  //voguepay_add_item( $form, name of item ,  description for the item, price of the item);
-  $form = $this->vgniter_lib->$voguepay_add_item( &$form, 'Face Cap',  'beautiful facecap for use', 1000);
+
+  //spay_form( $form, name of item ,  description for the item, price of the item);
+  $form = $this->spay->$voguepay_add_item( &$form, 'Face Cap',  'beautiful facecap for use', 1000);
 ```
 	Dont forget to close the form variable
-	// fuction apends item total, submit button, and closes form
-```php
-  //vogniter_close( &$form , image, 'make_payment' , butcolor )
-  $outputform = vogniter_close( &$form , true,  'make_payment' , 'blue');
-  echo $outputform;
-```
+
 
 
 		View sample controller code below
@@ -66,7 +57,7 @@ class Spay extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->library('Vgniter_lib');  
+		$this->load->library('Spay');  
 		 
 	}
 	
@@ -74,16 +65,9 @@ class Spay extends CI_Controller {
 	{
 
 	// create form with default values set in config i.e merchant_ref, merchant_id, e.t.c
-	// and also add <form method='POST' action='https://voguepay.com/pay/'>
-	$form = $this->vgniter_lib->voguepay_start(1000,'','','','','','demo');
-	
-	// function to add item you want to sell to form including item name, item descriptio
-	// and item price, it will automatically generate total for all items
-	$form = $this->vgniter_lib->voguepay_add_item( &$form, 'Face Cap',  'beautiful facecap for use', 1000);
-	$form = $this->vgniter_lib->voguepay_add_item( &$form, 'Laban T-shirt', $desc = 'Labeled T-shirts', 4500);
-	$finalform = $this->vgniter_lib->vogniter_close( $form , true, 'make_payment' ,  'blue');
-	
-		echo $finalform;
+	$form = $this->spay->spay_form( &$form, 'Laban T-shirt', $desc = 'Labeled T-shirts', 4500);
+
+	echo $finalform;
 	}
 	
 }	
