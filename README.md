@@ -37,39 +37,67 @@ software availability and distribution.
   $this->load->library('spay');
 ```
 
-   To add 
-   Initiate the library with
+   To use library 
+   populate the param array with your values or you can view http://simplepay.com/developer.php for more details on the fields (array elements)
 ```php
-
-  //spay_form( $form, name of item ,  description for the item, price of the item);
-  $form = $this->spay->$voguepay_add_item( &$form, 'Face Cap',  'beautiful facecap for use', 1000);
+ $param = array(
+							"customid" => '1255634',
+							"freeclient" => 'N',
+							"demo" => 'Y', // if you are testing the application [ Y / N ]
+							"price" => '1000',
+							"quantity" => '3',
+							"period" => '',
+							"trial" => '',
+							"escrow" => '',
+							"action" => 'payment', // action product/donation/subscription/payment
+							"pname" => 'Gucci Shoes',
+							"desc" => 'Imported Classic Gucci Shoes',
+							"setupfee" => '',
+							"tax" => '',
+							"shipping" => '',
+							"comments" => '',
+							"button" => 'accepted'  // pay / subscribe / escrow / accepted / donation 
+							);
+							$form = $this->spay->spay_form( $param );
+							echo $form;
 ```
-	Dont forget to close the form variable
+	it auto close the form variable
 
 
 
 		View sample controller code below
 ```php
-<?php
- 	
-class Spay extends CI_Controller {
-
+class Simplepay extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->library('Spay');  
+		$this->load->library('spay');  
 		 
 	}
 	
 	function index()
 	{
-
-	// create form with default values set in config i.e merchant_ref, merchant_id, e.t.c
-	$form = $this->spay->spay_form( &$form, 'Laban T-shirt', $desc = 'Labeled T-shirts', 4500);
-
-	echo $finalform;
+			 $param = array(
+							"customid" => '1255634',
+							"freeclient" => 'N',
+							"demo" => 'Y', // if you are testing the application [ Y / N ]
+							"price" => '1000',
+							"quantity" => '3',
+							"period" => '',
+							"trial" => '',
+							"escrow" => '',
+							"action" => 'payment', // action product/donation/subscription/payment
+							"pname" => 'Gucci Shoes',
+							"desc" => 'Imported Classic Gucci Shoes',
+							"setupfee" => '',
+							"tax" => '',
+							"shipping" => '',
+							"comments" => '',
+							"button" => 'accepted'  // pay / subscribe / escrow / accepted / donation 
+							);
+							$form = $this->spay->spay_form( $param );
+							echo $form;
 	}
-	
 }	
 	
 ```
