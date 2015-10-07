@@ -32,7 +32,9 @@ software availability and distribution.
 	
 ## A Simple Example
 
-  To use library Spay, load the library in your controller
+  To use library Spay first edit your config file setting at
+  application/config/simplepay.php,
+  load the library in your controller
 ```php
   $this->load->library('spay');
 ```
