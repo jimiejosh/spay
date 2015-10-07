@@ -27,7 +27,7 @@ class Simplepay extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->library('Vgniter_lib');  
+		$this->load->library('spay');  
 		 
 	}
 	
@@ -36,22 +36,23 @@ class Simplepay extends CI_Controller {
 			 $param = array(
 							"customid" => '1255634',
 							"freeclient" => 'N',
-							"Demo" => '', // if you are testing the application
-							"button" => '',
-							"price" => '',
-							"quantity" => '',
+							"demo" => 'Y', // if you are testing the application [ Y / N ]
+							"price" => '1000',
+							"quantity" => '3',
 							"period" => '',
 							"trial" => '',
 							"escrow" => '',
-							"action" => '', // action product/donation/subscription/payment
-							"pname" => '',
-							"desc" => '',
+							"action" => 'payment', // action product/donation/subscription/payment
+							"pname" => 'Gucci Shoes',
+							"desc" => 'Imported Classic Gucci Shoes',
 							"setupfee" => '',
 							"tax" => '',
 							"shipping" => '',
 							"comments" => '',
 							"button" => 'accepted'  // pay / subscribe / escrow / accepted / donation 
 							);
+							$form = $this->spay->spay_form( $param );
+							echo $form;
 	}
 	
 	function notify()
@@ -124,3 +125,4 @@ if($referer=="https://simplepay4u.com" || $referer=="https://www.simplepay4u.com
 	
 	
 	}
+?>
