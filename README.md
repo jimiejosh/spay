@@ -26,13 +26,13 @@ software availability and distribution.
 
 
     Drop the provided files into the CodeIgniter project
-    Configure your vougepay details inside the application/config/simplepay.php file. refer to http://simplepay.com/developer.php
+    Configure your simplepay details inside the application/config/simplepay.php file. refer to http://simplepay.com/developer.php
     Modify the controller example supplied (application/controller/simplepay.php) to fit your needs
 
 	
 ## A Simple Example
 
-  To use Spay load the library in your controller
+  To use library Spay, load the library in your controller
 ```php
   $this->load->library('spay');
 ```
