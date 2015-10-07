@@ -44,8 +44,12 @@ class Spay {
 	function spay_form( $param ){
 
 	// create form "<form method='POST' action='https://www.simplepay4u.com/process.php'>";
-	// Attributes can be added by passing an associative array to the second parameter, like this:
+	// Attributes can be added by passing an associative array to the second parameter, like this
+	if ($param['demo'] == 'Y' ){
+	 $code = form_open('https://sandbox.simplepay4u.com/process.php');
+	 } else {
 	 $code = form_open('https://www.simplepay4u.com/process.php');
+	 }
 	///////////////////////////
 	
 	$username = $this->ci->config->item('username',  'simplepay');
@@ -54,6 +58,7 @@ class Spay {
 	$site_logo = $this->ci->config->item('site_logo',  'simplepay');
 	$member = isset($username) ? $username : $email;
 	$escrow = isset($param['escrow']) ? $param['escrow'] : $this->ci->config->item('escrow',  'simplepay');
+	$action = isset($param['action']) ? $param['action'] : 'payment';
 	$code .= '<input type="hidden" name="escrow" value="'.$escrow.'" />
 			<input type="hidden" name="member" value="'.$member.'" />
 			<input type="hidden" name="CMAccountid" value="'.$cmaccountid.'" />
@@ -75,13 +80,13 @@ class Spay {
 			<input type="hidden" name="unotify" value="'.$unotify.'" />
 			<input type="hidden" name="ucancel" value="'.$ucancel.'" />';
  
-	if( $param['quantity'] != ''){ $code .= "<input type='hidden' name='quantity' value='$param['quantity']' />"; }
-	if( $param['period'] != ''){ $code .= "<input type='hidden' name='period' value='$param['period']' />"; }
-	if( $param['trial'] != ''){ $code .= "<input type='hidden' name='trial' value='$param['trial']' />"; }
-	if( $param['setup'] != ''){ $code .= "<input type='hidden' name='setup' value='$param['setup']' />"; }
-	if( $param['tax'] != ''){ $code .= "<input type='hidden' name='tax' value='$param['tax']' />"; }
-	if( $param['shipping'] != ''){ $code .= "<input type='hidden' name='shipping' value='$param['shipping']' />"; }
-	if( $param['customid'] != ''){ $code .= "<input type='hidden' name='customid' value='$param['customid']' />"; }
+	if( $param['quantity'] != ''){ $code .= "<input type='hidden' name='quantity' value='".$param['quantity']."' />"; }
+	if( $param['period'] != ''){ $code .= "<input type='hidden' name='period' value='".$param['period']."' />"; }
+	if( $param['trial'] != ''){ $code .= "<input type='hidden' name='trial' value='".$param['trial']."' />"; }
+	if( $param['setupfee'] != ''){ $code .= "<input type='hidden' name='setup' value='".$param['setupfee']."' />"; }
+	if( $param['tax'] != ''){ $code .= "<input type='hidden' name='tax' value='".$param['tax']."' />"; }
+	if( $param['shipping'] != ''){ $code .= "<input type='hidden' name='shipping' value='".$param['shipping']."' />"; }
+	if( $param['customid'] != ''){ $code .= "<input type='hidden' name='customid' value='".$param['customid']."' />"; }
 	
 	
 	
@@ -121,4 +126,3 @@ endswitch;
 	
 		
 }
-
